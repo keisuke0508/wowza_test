@@ -3,6 +3,7 @@
 import config
 from flask import Flask, render_template
 import os
+import json
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -12,7 +13,7 @@ app.secret_key = os.urandom(24)
 def get():
     return render_template(
         "index.html",
-        settings=config.SETTINGS
+        wawza_config=config.WAWZA_CONFIG
     )
 
 

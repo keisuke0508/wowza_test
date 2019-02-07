@@ -7,22 +7,14 @@
 {% block body %}
 
 <div id="livePlayer" style="width:100%; height:0; padding:0 0 56.25% 0"></div>
+<input type="button" value="live checker" onclick="liveChecker();">
+<input type="button" value="10sec ago" onclick="backToTenSecAgo();">
+<input type="button" value="last" onclick="goToLast();">
 
+<script type="text/javascript" src="/static/js/index.js"></script>
 <script type="text/javascript">
-  var settings = {{ settings|tojson }}
-  var livePlayer = WowzaPlayer.create('livePlayer', {
-    "license": settings.license,
-    "title": settings.title,
-    "description": settings.description,
-    "sourceURL": settings.source_url ,
-    "autoPlay": settings.auto_play,
-    "volume": settings.volume,
-    "mute": settings.mute,
-    "loop": settings.loop,
-    "audioOnly": settings.audio_only,
-    "startAtLivePoint": settings.start_at_live_point,
-    "uiShowQuickRewind": settings.ui_show_quick_rewind,
-  });
+  window.onload = function(){
+    wowzaSetting({{ wawza_config|tojson }});
+  }
 </script>
-
 {% endblock %}
